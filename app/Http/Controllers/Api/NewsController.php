@@ -2,43 +2,31 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\NewsRequest;
+use jcobhams\NewsApi\NewsApi;
 
 class NewsController extends BaseController
 {
-    /**
-     * @var PendingRequest
-     */
-    protected $httpClient;
+    protected $newsapi;
 
-    public function __construct(PendingRequest $httpClient)
+    public function __construct()
     {
-        $this->httpClient = $httpClient;
-        $this->httpClient->baseUrl(
-            sprintf('https://newsapi.org/v2')
-        )->contentType('appilcation/json')
-            ->acceptJson()
-            ->withToken(config('services.news_api.token') ? env('NEWS_API_TOKEN') : '');
+
+        $this->newsapi = new NewsApi(config('services.news_api.token') ? env('NEWS_API_TOKEN') : '');
+
     }
 
 
-  
-    
-    public function fetchNews(Request $request)
+
+
+    public function fetchNews(NewsRequest $request)
     {
 
         try {
-            $response = $this->httpClient->get('/everything', [
-                'q' => $request->key,
-                'from' => $request->from,
-                'sortBy' => 'publishedAt',
-            ]);
+            $response = $this->newsapi->getEverything($request->key, $request->sources, $request->domains, $request->exclude_domains, $request->from, $request->to, $request->language, $request->sort_by, $request->page_size, $request->page);
 
-            $articles = $response->json('articles');
-
-            if (!empty($articles)) {
-                return $this->sendResponse($articles, 'Article Retrieved Successfully');
+            if (!empty($response)) {
+                return $this->sendResponse($response, 'Article Retrieved Successfully');
             } else {
                 return $this->sendError(['error' => 'No articles found.']);
             }
