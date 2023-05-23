@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Preference;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -52,5 +53,10 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->password = bcrypt('password');
         });
+    }
+
+    public function preferences()
+    {
+        return $this->hasMany(Preference::class);
     }
 }
