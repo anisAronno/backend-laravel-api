@@ -20,7 +20,7 @@ class AuthController extends BaseController
 
             return $this->sendResponse($success, 'User login successfully.');
         } else {
-            return $this->sendError('Unauthorized.', ['error'=>'Email or password is wrong']);
+            return $this->sendError('Wrong Password!', ['error'=>'Password is wrong']);
         }
     }
 
