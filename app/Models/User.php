@@ -51,10 +51,14 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($model) {
-            $model->password = bcrypt('password');
+            $model->password = bcrypt(request()->input('password'));
         });
     }
 
+    public function searches()
+    {
+        return $this->hasMany(Search::class);
+    }
     public function preferences()
     {
         return $this->hasMany(Preference::class);

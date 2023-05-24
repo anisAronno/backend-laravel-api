@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class LoginRequest extends FormRequest
+class UpdateSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,15 +22,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' =>['required', 'email', Rule::exists('users', 'email')],
-            'password' => 'required|min:6|max:255'
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'email.exists' => 'Account not found!'
+            //
         ];
     }
 }

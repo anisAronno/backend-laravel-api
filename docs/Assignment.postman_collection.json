@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "df61174c-4505-45a1-a908-2497cf520c03",
-		"name": "Backend",
+		"name": "Assignment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15228368"
 	},
@@ -69,7 +69,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{site_url}}/api/login?email=anis@gmail.com&password=password",
+							"raw": "{{site_url}}/api/login?email=anichur@wedevs.com&password=123456",
 							"host": [
 								"{{site_url}}"
 							],
@@ -80,11 +80,11 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "anis@gmail.com"
+									"value": "anichur@wedevs.com"
 								},
 								{
 									"key": "password",
-									"value": "password"
+									"value": "123456"
 								}
 							]
 						}
@@ -165,50 +165,6 @@
 			"name": "News API",
 			"item": [
 				{
-					"name": "get post",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "c8db95add82a401cbcd6eb0a26fc0337",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://newsapi.org/v2/everything?q=tesla&from=2023-04-18&sortBy=publishedAt",
-							"protocol": "https",
-							"host": [
-								"newsapi",
-								"org"
-							],
-							"path": [
-								"v2",
-								"everything"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "tesla"
-								},
-								{
-									"key": "from",
-									"value": "2023-04-18"
-								},
-								{
-									"key": "sortBy",
-									"value": "publishedAt"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "news",
 					"request": {
 						"auth": {
@@ -230,7 +186,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{site_url}}/api/news/?key=BBC",
+							"raw": "{{site_url}}/api/news/",
 							"host": [
 								"{{site_url}}"
 							],
@@ -242,7 +198,82 @@
 							"query": [
 								{
 									"key": "key",
-									"value": "BBC"
+									"value": "BBC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Searches",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|EaDRUrfDgJpAbBJ5NmWET2CgwEY6bWwmp4LIOj5g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/api/search",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Searches Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|EaDRUrfDgJpAbBJ5NmWET2CgwEY6bWwmp4LIOj5g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site_url}}/api/search?key=BD news",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "BD news"
 								}
 							]
 						}
@@ -257,7 +288,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "3|Bbj0ykvCH38TRPRgsENrIYSREm42FjS6UEv56JAE",
+									"value": "1|EaDRUrfDgJpAbBJ5NmWET2CgwEY6bWwmp4LIOj5g",
 									"type": "string"
 								}
 							]
@@ -271,7 +302,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{site_url}}/api/user-news?key=BBC",
+							"raw": "{{site_url}}/api/user-news?key=bindu",
 							"host": [
 								"{{site_url}}"
 							],
@@ -282,7 +313,7 @@
 							"query": [
 								{
 									"key": "key",
-									"value": "BBC"
+									"value": "bindu"
 								}
 							]
 						}

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Preference;
+use App\Models\Search;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->count(10)->has(Preference::factory()->count(5))->create();
+        User::factory(10)->count(10)
+        ->has(Preference::factory()->count(5))
+        ->has(Search::factory()->count(5))
+        ->create();
     }
 }
